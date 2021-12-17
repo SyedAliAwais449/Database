@@ -25,6 +25,18 @@ public class MainActivity extends AppCompatActivity {
         name= findViewById(R.id.name);
         age= findViewById(R.id.editTextNumber);
         studentsList= findViewById(R.id.listView);
-        
+
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    student = new Student(name.getText().toString(), Integer.parseInt(age.getText().toString()), active.isChecked());
+                    Toast.makeText(MainActivity.this, student.toString(), Toast.LENGTH_SHORT).show();
+                }
+                catch (Exception e){
+                    Toast.makeText(MainActivity.this, "Error", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 }
