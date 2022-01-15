@@ -15,7 +15,7 @@ import android.widget.Toast;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    Button add, viewAll;
+    Button add, viewAll, deleteButton;
     EditText name, age;
     Switch  active;
     ListView studentsList;
@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         age= findViewById(R.id.editTextNumber);
         studentsList= findViewById(R.id.listView);
         active= findViewById(R.id.switch1);
-
+        deleteButton= findViewById(R.id.button3);
         add.setOnClickListener(new View.OnClickListener() {
             Student student1;
             @Override
@@ -55,6 +55,19 @@ public class MainActivity extends AppCompatActivity {
                 List<String> list = dbHelper.getAllStudents();
                 ArrayAdapter arrayAdapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_list_item_1,list);
                 studentsList.setAdapter(arrayAdapter);
+            }
+        });
+
+        deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DBHelper dbHelper= new DBHelper(MainActivity.this);
+                if(dbHelper.delete(name.getText().toString())){
+                    Toast.makeText(MainActivity.this,name.getText().toString()+" has been deleted",Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    Toast.makeText(MainActivity.this,"Record with this name doesnot exist",Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }

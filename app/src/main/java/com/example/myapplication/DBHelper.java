@@ -75,4 +75,18 @@ public class DBHelper extends SQLiteOpenHelper {
         return studentArrayList;
     }
 
+    public boolean delete(String name)
+    {
+        SQLiteDatabase db = getWritableDatabase();
+        Cursor cursorCourses=db.rawQuery("SELECT * FROM "+ STUDENT_TABLE+" where STUDENTName=?", new String[] {name});
+        if(cursorCourses.moveToFirst())
+        {
+            db.delete("StudentTable", "STUDENTName=?",new String[] {name} );
+            return true;
+        }
+
+        else
+            return false;
+    }
+
 }
