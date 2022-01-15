@@ -15,7 +15,7 @@ import android.widget.Toast;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    Button add, viewAll, deleteButton;
+    Button add, viewAll, deleteButton, updateButton;
     EditText name, age;
     Switch  active;
     ListView studentsList;
@@ -68,6 +68,14 @@ public class MainActivity extends AppCompatActivity {
                 else{
                     Toast.makeText(MainActivity.this,"Record with this name doesnot exist",Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+
+        updateButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DBHelper dbhelper= new DBHelper(MainActivity.this);
+//                dbhelper.update();
             }
         });
     }
