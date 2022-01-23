@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
         studentsList= findViewById(R.id.listView);
         active= findViewById(R.id.switch1);
         deleteButton= findViewById(R.id.button3);
+        updateButton= findViewById(R.id.button4);
         add.setOnClickListener(new View.OnClickListener() {
             Student student1;
             @Override
@@ -74,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
         updateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DBHelper dbhelper= new DBHelper(MainActivity.this);
+//                DBHelper dbhelper= new DBHelper(MainActivity.this);
 //                dbhelper.update();
             }
         });
